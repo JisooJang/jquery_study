@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            $('button').click(function () {
+                $(this).text('비활성화하기'); //클릭한 대상의 text를 바꿈
+                $(this).parent().css('background', 'red');  //클릭한 대상의 부모, 즉 <div> 태그의 css 설정
+                $(this).parent().find('span').text('활성화');  //클릭한 대상의 부모, 즉 <div> 태그에서 <span>태그를 찾아 text를 바꿈
+            })
+        });
+    </script>
+
+    <div>
+        <span>비활성화</span>
+        <button>활성화하기</button>
+    </div>
+    <div>
+        <span>비활성화</span>
+        <button>활성화하기</button>
+    </div>
+</body>
+</html>

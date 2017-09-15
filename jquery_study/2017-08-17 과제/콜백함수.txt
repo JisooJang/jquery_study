@@ -1,0 +1,39 @@
+콜백함수는 코드를 통해 명시적으로 호출하는 함수가 아니라, 
+개발자는 단지 함수를 등록하기만 하고, 어떤 이벤트가 발생했거나 특정 시점에 도달했을때 시스템에서 호출되는 함수를 말한다.
+또한 특정 함수의 인자로 넘겨서, 코드 내부에서 호출되는 함수 또한 콜백 함수가 될 수 있다. 
+
+대표적인 콜백함수의 사용예가 자바스크립트에서의 이벤트 핸들러 처리이다. 
+
+예를 보도록 하자 !!
+
+
+window.onload = function(){
+
+       alert(' call me baby');
+
+       };
+
+window.onload 는 이벤트 핸들러로써 웹 페이지의 로딩이 끝나는 시점에 익명의 함수 function()  실행된다. 
+
+function()이 콜백함수로 등록된 것이다.
+
+
+
+$("#btn_1").click(function() {
+     alert("Btn 1 Clicked");
+});
+
+click 함수의 인자로 함수를 전달하고 있습니다. 
+그 함수는 click 함수가 실행이 되면 동작을 합니다. 위와 같은 형태가 가장 전형적인 자바스크립트의 콜백함수 입니다.
+
+var friends = ["Mike", "Stacy", "Andy", "Rick"];
+friends.forEach(function (eachName, index){
+     console.log(index + 1 + ". " + eachName); // 1. Mike, 2. Stacy, 3. Andy, 4. Rick
+});
+
+forEach라는 함수안에 익명의 함수를 넣어서 forEach 구문 내에서 동작을 하게 하고 있습니다.
+
+
+
+
+

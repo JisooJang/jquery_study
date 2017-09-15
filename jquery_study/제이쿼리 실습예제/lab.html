@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("input").focus(function(){
+        $(this).css("background-color", "#cccccc");
+    });
+    $("input").blur(function(){
+        $(this).css("background-color", "#ffffff");
+    });
+
+    $('#btn1').click(function () {
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var gender = $('input:radio[name="gender"]:checked').val();
+        var favorite = '';
+        $('input:checkbox[name="favorite"]:checked').each(function (index, item) {
+            if (index != 0) {
+                favorite += item[index];
+            }
+        });
+
+        alert("name : " + name + "\n email : " + email + " \n gender : " + gender + " \n favorite : " + favorite);
+    });
+
+    $('form').submit(function () {
+        if ($.trim($('#name').val()) == '') {
+            alert("성명을 입력하십시오.");
+            $('#name').focus();
+            return false;
+        }
+
+        if ($.trim($('#email').val()) == '') {
+            alert("이메일을 입력하십시오.");
+            $('#name').focus();
+            return false;
+        }
+
+        if (!$('input:radio[name="gender"]:checked').val()) {
+            alert("성별을 선택하십시오.");
+            return false;
+        }
+    });
+});
+</script>
+</head>
+<body>
+    <form name="frm">
+        Name: <input type="text" id="name" name="fullname"><br>
+        Email: <input type="text" id="email" name="email"><br />
+        Gender: 
+        <input type="radio" id="gender_m" name="gender" value="male" /> male
+        <input type="radio" id="gender_f" name="gender" value="female" /> female <br />
+
+        Favorite: 
+        <input type="checkbox" name="favorite" value="music" /> music
+        <input type="checkbox" name="favorite" value="music" /> history
+        <input type="checkbox" name="favorite" value="music" /> dance
+        <input type="checkbox" name="favorite" value="music" /> art
+        <input type="checkbox" name="favorite" value="music" /> programming <br />
+
+        <input type="button" id="btn1" value="button" />
+        <input type="submit" id="btn2" value="submit" />
+    </form>
+</body>
+</html>

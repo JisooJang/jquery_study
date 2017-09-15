@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+    .slider{
+      margin: 0 auto;
+      position: relative;
+      width: 700px;
+      height: 400px;
+      overflow: hidden;
+    }
+    .slider_panel{
+      position: relative;
+      height: 100%;
+    }
+    .slider_panel img{
+      float: left;
+      height: 100%;
+    }
+    .control_panel{
+      position: absolute;
+      top: 380px;
+      left: 270px;
+      height: 13px;
+    }
+    .control_btn{
+      margin: 1px;
+      position: relative;
+      width: 12px;
+      height: 12px;
+      float: left;
+      background: #dedede;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .control_btn:hover{
+      background: #453434;
+    }
+    .control_btn.active{
+      background: #000;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <body>
+    <div class="slider">
+      <div class="slider_panel">
+        <img src="iu1.jpg" alt="">
+        <img src="iu2.jpg" alt="">
+        <img src="iu3.jpg" alt="">
+        <img src="iu4.jpg" alt="">
+        <!--<img src="iu5.jpg" alt="">  -->
+      </div>
+      <div class="control_panel">
+      </div>
+    </div>
+  </body>
+  <script>
+
+    /* 사용자 설정 */
+
+    var sliderOption = {
+      visible : true,   //컨트롤패널이 보이는지?
+      autoplay : true,  //이미지가 자동으로 넘어가는지?
+      delay : 2000  //넘어가는데 걸리는 시간
+    };
+
+
+    /* 슬라이드 스크립트 */
+
+    (function(){
+
+      var sliderWidth = $('.slider').css('width'); // Slider의 넓이
+      var imgCount = $('.slider_panel').find("img").length; // 이미지의 갯수
+      var controlWidth; //동적으로 생성된 컨트롤 패널의 넓이
+      var id; //setInterval을 위한 변수
+
+      function autoPlay(){
+
+        id = setInterval(function(){
+
+          if(count==imgCount-2){
+            count = -1;
+          }else{
+            count = $(".control_btn.active").attr('data-index');
+          }
+
+          moveSlider(Number(count)+1);
+
+        },sliderOption.delay);
+      }
+
+
+
+      $('.slider_panel').css('width',parseInt(sliderWidth)*imgCount);  //슬라이더 패널의 넓이를 이미지 갯수에 따라 설정
+      $('.slider_panel img').css({                                     //하위 브라우저 고려를 위해 이미지 크기를 동적으로 설정
+        width : sliderWidth
+      });
+
+
+
+      for(var i=0; i<imgCount; i++){                                    //콘트롤 패널 동적 생성
+        $(".control_panel").append('<div class="control_btn ' + (i==0?"active":"") + '"></div>');  //CSS효과를 위해 첫번째 컨트롤패널에는 active 클래스를 추가해준다
+      }
+
+      controlWidth = $('.control_panel').css('width');  //컨트롤 패널이 생성 된 후 넓이를 가져온다
+      $('.control_panel').css('left',(parseInt(sliderWidth)/2)-(parseInt(controlWidth)/2)); //하위 브라우저 고려를 위해 위치를 동적으로 설정
+
+
+
+
+      var moveSlider = function(index){          // 슬라이드 움직이기
+        var willMoveLeft = -(index*parseInt(sliderWidth));
+
+        $('.slider_panel').stop().animate({left:willMoveLeft},'slow');
+        $('.control_btn[data-index="'+ index +'"]').addClass('active');
+        $('.control_btn[data-index!='+ index +']').removeClass('active');
+      }
+
+
+      $('.control_btn').each(function(index){
+        $(this).attr('data-index',index);
+      }).click(function(){
+
+        var index = $(this).attr('data-index');
+
+        moveSlider(index);
+
+        if(sliderOption.autoplay){
+          sliderOption.autoplay = false;
+          clearInterval(id);
+
+          setTimeout(function(){
+            sliderOption.autoplay = true;
+            autoPlay();
+          },1200);
+        }
+      });
+
+
+
+      /*사용자 옵션*/
+
+      sliderOption.visible ? true: $(".control_panel").css("display","none");  // 컨트롤패널 보임여부확인
+
+      if(sliderOption.autoplay){     // 오토플레이
+        var count;
+        autoPlay();
+      }
+
+    })();   // 즉시 실행 함수
+
+
+
+  </script>
+</html>

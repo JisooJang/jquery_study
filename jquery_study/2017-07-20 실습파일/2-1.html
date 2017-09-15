@@ -1,0 +1,60 @@
+<!-- 
+	1. 숫자 1, 2, 3의 값을 10, 20, 30으로 변경하세요.    -> text() 활용
+	2. 숫자 10, 20, 30의 값에 태그 <b></b>를 추가하세요. -> html() 활용
+	3. 숫자 30에 class="pink"를 추가하고, is()를 활용하여 class="pink" 경우에 배경색을 pink로 변경하세요.
+	4. img 태그의 src값을 http://www.placehold.it/200x200로 추가하세요.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>2.html</title>
+	<style>
+		table {
+			border-collapse: collapse;
+			text-align: center;
+		}
+		
+	</style>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script> 
+	<script>
+		$(function(){
+		    $('td').each(function (index, item) {
+		        if ($(item).text() == '1') {
+		            $(item).text('10');
+		        }
+		        if ($(item).text() == '2') {
+		            $(item).text('20');
+		        }
+		        if ($(item).text() == '3') {
+		            $(item).text('30');
+		        }
+		    });
+		})
+
+	</script>
+</head>
+<body>
+	<table border="1" width="50%" height="300px" align="center">
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+		</tbody>
+	</table>
+	<img src="" />
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function makeStudent(name, korean, math, english, science) {
+            var willReturn = {
+                this.name: name,
+                this.korean: korean,
+                this.math: math,
+                this.english: english,
+                this.science: science,
+                
+                getSum: function () {
+                    return this.korean + this.math + this.english + this.science;
+                },
+
+                getAverage: function () {
+                    return this.getSum() / 4;
+                },
+
+                toString: function () {
+                    return this.name + '    ' + this.getSum() + '   ' + this.getAverage();
+                }
+            };
+
+            return willReturn;
+        }
+
+        var students = [];
+
+        students.push(makeStudent('Jang', 87, 98, 88, 95));
+        students.push(makeStudent('Kim', 92, 98, 66, 89));
+
+        var output = '';
+        for (var i in students) {
+            output += students[i].toString() + '\n';
+        }
+
+        alert(output);
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

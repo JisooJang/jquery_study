@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .select {
+            background: #F15F5F;
+            color: white;
+        }
+        .mouse {
+            background: #EAEAEA;
+        }
+    </style>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // 1. 텍스트 입력내용을 ul태그 아래의 li태그로 추가하세요. 추가버튼을 누르면 텍스트 입력 내용을 비우세요.
+
+            // 2. li 태그에 mouseenter, mouseleave 이벤트를 연결하여 클래스속성을 추가, 제거하는 방식으로 배경색을 제어하세요.
+            // (단 동적으로 생성된 li태그도 적용되어야함)
+
+            // 3. li태그 중 특정 행을 선택하거나 재선택하면 배경색이 제어되도록 클래스속성을 추가하는 방식(toggleClass)으로 클릭이벤트를 연결하세요.
+            // 조건 : 단 동적으로 생성된 li태그도 적용되어야함, 또한 li태그 선택은 한 개만 가능함.
+            // 3-2. 또한 li태그 선택시 해당 li태그의 문자열을 input=text 태그로 불러오세요.
+           
+            // 4. 3번에서 특정 li 태그를 선택한 후 삭제버튼을 누르면 문서 객체가 제거되도록 하세요.
+             
+            // 5. 3-2의 input text태그에 수정된 문자열을 선택된 li태그의 내부 문자로 갱신하세요.
+            
+            //6. up버튼을 누르면 선택된 li태그의 위치를 한 행 내려주세요. 선택된 li객체의 index('속성') 메소드 사용 가능
+            
+            //7. down버튼을 누르면 선택된 li태그의 위치를 한 행 올려주세요.
+               
+        });
+    </script>
+</head>
+<body>
+<input type="text" id="text"/>
+<input type="button" id="add" value="추가" />         
+<input type="button" id="modify" value="수정" />
+<input type="button" id="delete" value="삭제" />
+<input type="button" id="up" value="up" />
+<input type="button" id="down" value="down" /> 
+<hr />
+    <ul class="list">
+        <li>test1</li>
+        <li>test2</li>
+        <li>test3</li>
+    </ul>      
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .high-light-0 { background: yellow; }
+        .high-light-1 { background: orange; }
+        .high-light-2 { background: blue; }
+        .high-light-3 { background: green; }
+        .high-light-4 { background: red; }
+    </style>
+    <script src="jquery-3.2.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            var object = {};
+            object.name = 'RintIanTta';
+            $.extend(object, {
+                region: 'Seoul',
+                part: 'Second Guitar'
+            });
+
+            var output = '';
+            $.each(object, function(key, item) {
+                output += key + ': ' + item + '\n';
+            });
+
+            alert(output);
+        });
+    </script>
+</head>
+<body>
+    <h1>item - 0</h1>
+    <h1>item - 1</h1>
+    <h1>item - 2</h1>
+    <h1>item - 3</h1>
+    <h1>item - 4</h1>
+</body>
+</html>

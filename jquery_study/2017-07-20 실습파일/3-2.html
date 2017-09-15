@@ -1,0 +1,105 @@
+<!-- 
+	1. 숫자 5를 클릭하면 숫자 5입니다. alert 띄우세요.
+	2. 숫자 9에 마우스를 올리면 class="hover"를 추가하고, 마우스를 밖으로 빼면 class="hover"를 제거하도록 변경하세요.
+	3. 9번이벤트제거 버튼을 클릭하면 말그대로 9번의 이벤트를 제거하세요. (hover제거)
+	4. 9번이벤트추가 버튼을 클릭하면 원래대로 이벤트를 달아주세요.
+	5. 이벤트강제발생 버튼을 클릭하여 숫자 5입니다 alert를 띄우세요.()
+	6. 로그인버튼을 클릭하면 id에 입력된 값과, pw에 입력된 값을 'id : pw' 형식으로 alert를 띄우세요.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>2.html</title>
+	<style>
+		table {
+			border-collapse: collapse;
+			text-align: center;
+		}
+
+		.hover {
+			background-color: tomato;
+		}
+		
+	</style>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script> 
+	<script>
+
+        $(function () {
+            $('td').each(function (index, item) {   //q1
+                if ($(item).text() == '5') {
+                    $(item).click(function (event) {
+                        alert('숫자 ' + $(item).text() + '입니다.');
+                    });
+                }
+
+                if ($(item).text() == '9') {    //q2
+                    $(item).hover(
+                       function () {
+                           $(item).addClass('hover');
+                       }, function () {
+                           $(item).removeClass('hover');
+                    });
+                }
+            });
+
+            $('button.nineRemove').click(function (event) { //q3
+                $('td:last').off();
+            });
+
+            $('button.nineAdd').click(function (event) {    //q4
+                $('td:last').hover(
+                    function () {
+                        $(this).addClass('hover');
+                    },
+                    function () {
+                        $(this).removeClass('hover');
+                    }
+                    );
+            });
+
+            $('button.trigger').click(function (event) {    //q5
+                $('td:contains("5")').trigger('click'); 
+            });
+
+           
+
+            $('button#login').click(function (event) {  //q6
+                var id = $('#id').val();
+                var pw = $('#pw').val();
+
+                alert(id + ' : ' + pw);
+            });
+
+        });
+
+	</script>
+</head>
+<body>
+	<table border="1" width="50%" height="300px" align="center">
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+		</tbody>
+	</table>
+	<button class="nineRemove">9번이벤트제거</button>
+	<button class="nineAdd">9번이벤트추가</button>
+	<button class="trigger">이벤트강제발생</button><br>
+	id : <input type="text" id="id" /><br>
+	pw : <input type="password" id="pw" /><br>
+	<button id="login">로그인</button>
+</body>
+</html>

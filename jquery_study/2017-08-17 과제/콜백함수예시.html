@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+    function callTenTimes(callback) {   //callback처럼 매개변수로 전달하는 함수를 콜백함수라고 한다.
+        for(var i = 0 ; i < 10 ; i++) {
+            callback();
+        }
+    }
+
+    callTenTimes(function () {
+        alert('함수 호출');
+    });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

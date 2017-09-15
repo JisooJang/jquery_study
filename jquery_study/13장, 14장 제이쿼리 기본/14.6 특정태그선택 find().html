@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+    <script>
+        var xml = '';
+        xml += '<friends>';
+        xml += '    <friend>';
+        xml += '        <name>Jisu</name>';
+        xml += '        <language>Ruby</language>';
+        xml += '    </friend>';
+        xml += '    <friend>';
+        xml += '        <name>Yoon</name>';
+        xml += '        <language>C#</language>';
+        xml += '    </friend>';
+        xml += '    <friend>';
+        xml += '        <name>Ring</name>';
+        xml += '        <language>Basic</language>';
+        xml += '    </friend>';
+        xml += '</friends>';
+
+        $(document).ready(function () {
+            var xmlDoc = $.parseXML(xml);   // 일반문자열 xml변수를 XML문서객체로 변환
+            $(xmlDoc).find('friend').each(function (index) {    // XML문서객체의 'friend'태그만 찾아 하나하나 순회하여 함수 체킹
+                var output = '';
+                output += '<div>';
+                output += ' <h1>' + $(this).find('name').text() + '</h1>';  // XML문서객체의 friend태그 본 객체에서 'name'태그를 찾아 태그 내부의 값을 가져옴
+                output += ' <p>' + $(this).find('language').text() + '</p>';    //// XML문서객체의 friend태그 본 객체에서 'language'태그를 찾아 태그 내부의 값을 가져옴
+                output += '</div>';
+
+                document.body.innerHTML += output;  //html 바디태그에 변수 output을 설정
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

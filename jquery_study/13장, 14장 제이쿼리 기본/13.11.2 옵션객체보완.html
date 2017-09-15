@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+    <script>
+        function test(options) {
+            options = $.extend({
+                valueA: 10,
+                valueB: 20,
+                valueC: 30
+            }, options);
+
+            alert(options.valueA + ':' + options.valueB + ':' + options.valueC);
+        }
+
+        test({
+            valueA: 52,
+            valueC: 273
+        });
+    </script>
+</head>
+<body>
+    <h1>item - 0</h1>
+    <h1>item - 1</h1>
+    <h1>item - 2</h1>
+    <h1>item - 3</h1>
+    <h1>item - 4</h1>
+</body>
+</html>
